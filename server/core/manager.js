@@ -1,6 +1,15 @@
 'use strict';
 
 var FullMonth = function (year, month) {
+    var prev = {
+            year: month > 1 ? year : year - 1,
+            month: month > 1 ? month - 1 : 12
+        },
+        next = {
+            year: month < 12 ? year : year + 1,
+            month: month < 12 ? month + 1 : 1
+        };
+    
     return {
         year: year,
         month: month,
@@ -19,16 +28,10 @@ var FullMonth = function (year, month) {
             }
         },
         getPrevMonth: function () {
-            var year = this.month === 1 ? this.year - 1 : this.year,
-                month = this.month === 1 ? 12 : this.month - 1;
-
-            return new FullMonth(year, month);
+            return new FullMonth(prev.year, prev.month);
         },
         getNextMonth: function () {
-            var year = this.month === 12 ? this.year + 1 : this.year,
-                month = this.month === 12 ? 1 : this.month + 1;
-
-            return new FullMonth(year, month);
+            return new FullMonth(next.year, next.month);
         }
     };
 };
@@ -36,5 +39,15 @@ var FullMonth = function (year, month) {
 module.exports = {
     getMonth: function (year, month) {
         return new FullMonth(year, month);
+    },
+    getActualMonth: function () {
+        var now = new Date(),
+            actual = new FullMonth(now.getFullYear(), now.getMonth() + 1);
+        
+        return {
+            actual: actual,
+            prev: actual.getPrevMonth(),
+            next: actual.getNextMonth()
+        };
     }
 };

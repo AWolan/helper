@@ -2,21 +2,23 @@
 
 var express = require('express'),
     router = express.Router(),
-    salaryCore = require('C:/work/my/js/helper/server/core/salary.js');
+    core = serverRequire('/core/salary.js');
 
 router.route('/')
     .get(function (request, response) {
-        var salaryList = salaryCore.getBaseList();
-        response.json(salaryCore.calculateSalary(salaryList));
+        var salaryBaseList = core.getBaseList(),
+            salaryList = core.calculateSalary(salaryBaseList);
+        response.json(salaryList);
     });
 router.route('/month/:year/:month')
     .get(function (request, response) {
-        var salaryList = salaryCore.getBaseSalaryForMonth(request.params.year, request.params.month);
-        response.json(salaryCore.calculateSalary(salaryList));
+        var salaryBaseList = core.getBaseSalaryForPrevMonth(request.params.year, request.params.month),
+            salaryList = core.calculateSalary(salaryBaseList);
+        response.json(salaryList);
     });
 router.route('/base')
     .get(function (request, response) {
-        response.json(salaryCore.getBaseList());
+        response.json(core.getBaseList());
     });
 
 module.exports = router;

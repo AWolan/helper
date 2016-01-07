@@ -1,8 +1,8 @@
 'use strict';
 
-var parse = require('C:/work/my/js/helper/server/core/parse.js'),
-    manager = require('C:/work/my/js/helper/server/core/manager.js'),
-    data = require('C:/work/my/js/helper/server/data/obligation.js'),
+var parse = serverRequire('/core/parse.js'),
+    manager = serverRequire('/core/manager.js'),
+    data = serverRequire('/data/obligation.js'),
     calculateTank = function (payment, prevPayment) {
         var i, tank, consumption, distance, liters, prevMileage,
             tankList = [];

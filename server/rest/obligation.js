@@ -2,15 +2,17 @@
 
 var express = require('express'),
     router = express.Router(),
-    obligationCore = require('C:/work/my/js/helper/server/core/obligation.js');
+    core = serverRequire('/core/obligation.js');
 
 router.route('/')
     .get(function (request, response) {
-        response.json(obligationCore.getObligationData());
+        var obligationList = core.getObligationData();
+        response.json(obligationList);
     });
 router.route('/month/:year/:month')
     .get(function (request, response) {
-        response.json(obligationCore.getObligationForMonth(request.params.year, request.params.month));
+        var obligationList = core.getObligationForMonth(request.params.year, request.params.month);
+        response.json(obligationList);
     });
 
 module.exports = router;

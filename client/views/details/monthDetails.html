@@ -52,32 +52,6 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td>Razem</td>
-                    <td></td>
-                    <td>
-                        <table>
-                            <tr>
-                                <th rowspan="2">{{detailsTitle.obligation.name}}</th>
-                                <th colspan="2">{{detailsTitle.obligation.plan}}</th>
-                                <th colspan="2">{{detailsTitle.obligation.payment}}</th>
-                            </tr>
-                            <tr>
-                                <th>{{detailsTitle.obligation.date}}</th>
-                                <th>{{detailsTitle.obligation.amount}}</th>
-                                <th>{{detailsTitle.obligation.date}}</th>
-                                <th>{{detailsTitle.obligation.amount}}</th>
-                            </tr>
-                            <tr data-ng-init="monthDetails.obligationList |">
-                                <td></td>
-                                <td>{{monthDetails.obligationList | min: 'payment.plan.date'}}</td>
-                                <td>{{payment.plan.amount}}</td>
-                                <td>{{payment.payment.date}}</td>
-                                <td>{{payment.payment.amount}}</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
             </table>
         </td>
     </tr>

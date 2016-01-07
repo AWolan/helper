@@ -1,9 +1,9 @@
 'use strict';
 
-var math = require('C:/work/my/js/helper/server/core/math.js'),
-    parse = require('C:/work/my/js/helper/server/core/parse.js'),
-    manager = require('C:/work/my/js/helper/server/core/manager.js'),
-    data = require('C:/work/my/js/helper/server/data/salary.js'),
+var math = serverRequire('/core/math.js'),
+    parse = serverRequire('/core/parse.js'),
+    manager = serverRequire('/core/manager.js'),
+    data = serverRequire('/data/salary.js'),
     sum = function (list) {
         var i, result = 0;
         for (i = 0; i < list.length; i += 1) {
@@ -137,13 +137,15 @@ module.exports = {
         }
         return salaryList;
     },
-    getBaseSalaryForMonth: function (year, month) {
+    getBaseSalaryForPrevMonth: function (year, month) {
         var i, date, salaryBase, result = [],
-            fullMonth = manager.getMonth(year, month);
+            fullMonth = manager.getMonth(year, month),
+            prevMonth = fullMonth.getPrevMonth();
+        
         for (i = 0; i < data.baseList.length; i += 1) {
             salaryBase = data.baseList[i];
             date = parse.date(salaryBase.date, 'dd-mm-yyyy');
-            if (date >= fullMonth.getFirstDay() && date <= fullMonth.getLastDay()) {
+            if (date >= prevMonth.getFirstDay() && date <= prevMonth.getLastDay()) {
                 result.push(salaryBase);
             }
         }
