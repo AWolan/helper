@@ -1,0 +1,12 @@
+<table class="details">
+    <tr>
+        <th>{{title.name}}</th>
+        <th>{{title.date}}</th>
+        <th>{{title.amount}}</th>
+    </tr>
+    <tr data-ng-repeat="payment in paymentList">
+        <td>{{payment.name}}</td>
+        <td>{{payment.plan.date}}</td>
+        <td>{{payment.plan.amount}}</td>
+    </tr>
+</table>

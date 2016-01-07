@@ -1,0 +1,39 @@
+<table class="details">
+    <tr>
+        <th rowspan="2">{{title.name}}</th>
+        <th colspan="2">{{title.plan}}</th>
+        <th rowspan="2">{{title.payment}}</th>
+    </tr>
+    <tr>
+        <th>{{title.date}}</th>
+        <th>{{title.amount}}</th>
+    </tr>
+    <tr data-ng-repeat="payment in paymentList">
+        <td>{{payment.name}}</td>
+        <td>{{payment.plan.date}}</td>
+        <td>{{payment.plan.amount}}</td>
+        <td>
+            <table>
+                <tr>
+                    <th>{{title.date}}</th>
+                    <th>{{title.amount}}</th>
+                    <th>{{title.literPrice}}</th>
+                    <th>{{title.liters}}</th>
+                    <th>{{title.distance}}</th>
+                    <th>{{title.consumption}}</th>
+                    <th>{{title.mileage}}</th>
+                </tr>
+                <tr data-ng-repeat="tank in payment.payment">
+                    <td>{{tank.date}}</td>
+                    <td>{{tank.amount | number: 2}}</td>
+                    <td>{{tank.literPrice | number: 2}}</td>
+                    <td>{{tank.liters | number: 2}}</td>
+                    <td>{{tank.distance | number: 0}}</td>
+                    <td>{{tank.consumption | number: 2}}</td>
+                    <td>{{tank.mileage | number: 0}}</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    
+</table>

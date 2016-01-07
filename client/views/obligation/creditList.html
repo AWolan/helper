@@ -1,0 +1,22 @@
+<table class="details">
+    <tr>
+        <th rowspan="2">{{title.name}}</th>
+        <th rowspan="2">{{title.left}}</th>
+        <th colspan="2">{{title.plan}}</th>
+        <th colspan="2">{{title.payment}}</th>
+    </tr>
+    <tr>
+        <th>{{title.date}}</th>
+        <th>{{title.amount}}</th>
+        <th>{{title.date}}</th>
+        <th>{{title.amount}}</th>
+    </tr>
+    <tr data-ng-repeat="payment in paymentList">
+        <td>{{payment.name}}</td>
+        <td>{{payment.remains}}</td>
+        <td>{{payment.plan.date}}</td>
+        <td>{{payment.plan.amount}}</td>
+        <td>{{payment.payment.date}}</td>
+        <td>{{payment.payment.amount}}</td>
+    </tr>
+</table>

@@ -1,0 +1,40 @@
+<section data-ng-controller="ObligationController" data-ng-app="obligation">
+    <table class="base">
+        <tr>
+            <th>{{obligationTitle.name}}</th>
+            <th>{{obligationTitle.group}}</th>
+            <th>{{obligationTitle.totalAmount}}</th>
+            <th>{{obligationTitle.left}}</th>
+            <th>{{obligationTitle.prev}}</th>
+            <th>{{obligationTitle.next}}</th>
+        </tr>
+        <tr data-ng-repeat-start="obligation in obligationList" data-ng-click="onObligationClick(obligation)">
+            <td>{{obligation.name}}</td>
+            <td>{{obligation.group}}</td>
+            <td>{{obligation.totalAmount | number: 2}}</td>
+            <td>{{obligation.left | number: 2}}</td>
+            <td><data-payment-details data-model="obligation.prev" data-type="obligation.type"></data-payment-details></td>
+            <td><data-payment-details data-model="obligation.next" data-type="obligation.type"></data-payment-details></td>
+        </tr>
+        <tr data-ng-repeat-end data-ng-show="obligation.showDetails">
+            <td colspan="8" >
+                <data-payment-list data-list="obligation.paymentList" data-type="obligation.type"></data-payment-details>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>{{obligationTitle.name}}</th>
+            <th>{{obligationTitle.totalAmount}}</th>
+            <th>{{obligationTitle.left}}</th>
+            <th>{{obligationTitle.percent}}</th>
+        </tr>
+        <tr data-ng-repeat="type in typeList">
+            <td>{{type.name}}</td>
+            <td>{{total = (obligationList | filter: {type: type.id} | total: 'totalAmount') | number: 2}}</td>
+            <td>{{left = (obligationList | filter: {type: type.id} | total: 'left') | number: 2}}</td>
+            <td>{{(100*left/total) | number: 2}}%</td>
+        </tr>
+    </table>
+    <payment-details></payment-details>
+</section>

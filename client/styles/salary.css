@@ -1,0 +1,36 @@
+table {
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table.base tr:nth-child(4n) {
+    background-color: #f2f2f2;
+}
+
+table.base tr:nth-child(2n):hover {
+    background-color: #323232;
+    color: white;
+}
+
+table.base tr:nth-child(4n):hover {
+    background-color: #323232;
+    color: white;
+}
+
+table.details tr:nth-child(2n) {
+    background-color: #f2f2f2;
+}
+
+table.details tr:hover {
+    background-color: #c2c2c2;
+    color: black;
+}
+
+table.details tr:nth-child(2n):hover {
+    background-color: #c2c2c2;
+    color: black;
+}

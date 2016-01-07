@@ -1,0 +1,6 @@
+<section data-ng-show="paymentDetails.plan">
+    {{title.toPay}}: {{paymentDetails.plan.amount | number: 2}} {{title.until}} {{paymentDetails.plan.date}}
+</section>
+<section data-ng-show="paymentDetails.done">
+    {{title.paid}}: {{paymentDetails.payment.amount | number: 2}} {{title.on}} {{paymentDetails.payment.date}}
+</section>

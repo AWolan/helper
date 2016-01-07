@@ -1,0 +1,84 @@
+<section data-ng-show="!monthDetails.show" data-ng-click="monthDetails.show = true">{{detailsTitle.show}}: {{monthDetails.date.month}}-{{monthDetails.date.year}}</section>
+<table data-ng-show="monthDetails.show">
+    <tr data-ng-click="monthDetails.show = false">
+        <th>{{detailsTitle.month}}</th>
+        <th>{{detailsTitle.salary.main}}</th>
+        <th>{{detailsTitle.obligation.main}}</th>
+    </tr>
+    <tr>
+        <td>{{monthDetails.date.month}}-{{monthDetails.date.year}}</td>
+        <td>
+            <table>
+                <tr>
+                    <th>{{detailsTitle.salary.date}}</th>
+                    <th>{{detailsTitle.salary.amount}}</th>
+                </tr>
+                <tr class="base" data-ng-repeat="salary in monthDetails.salaryList">
+                    <td>{{salary.month}}-{{salary.year}}</td>
+                    <td>{{salary.net | number: 2}}</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table class="details">
+                <tr>
+                    <th>{{detailsTitle.obligation.name}}</th>
+                    <th>{{detailsTitle.obligation.group}}</th>
+                    <th>{{detailsTitle.obligation.list}}</th>
+                </tr>
+                <tr data-ng-repeat="obligation in monthDetails.obligationList">
+                    <td>{{obligation.name}}</td>
+                    <td>{{obligation.group}}</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <th rowspan="2">{{detailsTitle.obligation.name}}</th>
+                                <th colspan="2">{{detailsTitle.obligation.plan}}</th>
+                                <th colspan="2">{{detailsTitle.obligation.payment}}</th>
+                            </tr>
+                            <tr>
+                                <th>{{detailsTitle.obligation.date}}</th>
+                                <th>{{detailsTitle.obligation.amount}}</th>
+                                <th>{{detailsTitle.obligation.date}}</th>
+                                <th>{{detailsTitle.obligation.amount}}</th>
+                            </tr>
+                            <tr data-ng-repeat="payment in obligation.paymentList">
+                                <td>{{payment.name}}</td>
+                                <td>{{payment.plan.date}}</td>
+                                <td>{{payment.plan.amount}}</td>
+                                <td>{{payment.payment.date}}</td>
+                                <td>{{payment.payment.amount}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Razem</td>
+                    <td></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <th rowspan="2">{{detailsTitle.obligation.name}}</th>
+                                <th colspan="2">{{detailsTitle.obligation.plan}}</th>
+                                <th colspan="2">{{detailsTitle.obligation.payment}}</th>
+                            </tr>
+                            <tr>
+                                <th>{{detailsTitle.obligation.date}}</th>
+                                <th>{{detailsTitle.obligation.amount}}</th>
+                                <th>{{detailsTitle.obligation.date}}</th>
+                                <th>{{detailsTitle.obligation.amount}}</th>
+                            </tr>
+                            <tr data-ng-init="monthDetails.obligationList |">
+                                <td></td>
+                                <td>{{monthDetails.obligationList | min: 'payment.plan.date'}}</td>
+                                <td>{{payment.plan.amount}}</td>
+                                <td>{{payment.payment.date}}</td>
+                                <td>{{payment.payment.amount}}</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
