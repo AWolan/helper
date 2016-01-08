@@ -3258,14 +3258,14 @@ var rent = {
                 no: 12,
                 name: 'Rata 12',
                 remains: 14400,
-                done: false,
+                done: true,
                 plan: {
                     amount: 317.97,
                     date: '04-01-2016'
                 },
                 payment:  {
-                    amount: 0.00,
-                    date: ''
+                    amount: 317.97,
+                    date: '04-01-2016'
                 }
             },
             {
