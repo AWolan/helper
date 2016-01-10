@@ -145,7 +145,7 @@ var rent = {
                     date: '31-01-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -158,7 +158,7 @@ var rent = {
                     date: '28-02-2015'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -171,7 +171,7 @@ var rent = {
                     date: '31-03-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -184,7 +184,7 @@ var rent = {
                     date: '30-04-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -197,7 +197,7 @@ var rent = {
                     date: '31-05-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -210,7 +210,7 @@ var rent = {
                     date: '30-06-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -223,7 +223,7 @@ var rent = {
                     date: '31-07-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -249,7 +249,7 @@ var rent = {
                     date: '30-09-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -262,7 +262,7 @@ var rent = {
                     date: '31-10-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -275,7 +275,7 @@ var rent = {
                     date: '30-11-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -288,7 +288,7 @@ var rent = {
                     date: '31-12-2016'
                 },
                 payment:  {
-                    amount: 1300.00,
+                    amount: 0.00,
                     date: null
                 }
             }
@@ -306,7 +306,7 @@ var rent = {
                 done: true,
                 plan: {
                     amount: 34.80,
-                    date: '31-10-2015'
+                    date: '14-10-2015'
                 },
                 payment:  {
                     amount: 34.80,
@@ -319,7 +319,7 @@ var rent = {
                 done: true,
                 plan: {
                     amount: 85.20,
-                    date: '30-11-2015'
+                    date: '14-11-2015'
                 },
                 payment:  {
                     amount: 85.20,
@@ -332,37 +332,37 @@ var rent = {
                 done: true,
                 plan: {
                     amount: 85.20,
-                    date: '31-10-2015'
+                    date: '14-12-2015'
                 },
                 payment:  {
                     amount: 85.20,
-                    date: '29-09-2015'
+                    date: '29-11-2015'
                 }
             },
             {
                 no: 4,
                 name: 'Styczeń 2016',
-                done: false,
+                done: true,
                 plan: {
                     amount: 85.20,
-                    date: '31-10-2016'
+                    date: '14-01-2016'
                 },
                 payment:  {
-                    amount: 0.00,
-                    date: ''
+                    amount: 85.20,
+                    date: '09-01-2016'
                 }
             },
             {
                 no: 5,
                 name: 'Luty 2016',
-                done: false,
+                done: true,
                 plan: {
                     amount: 85.20,
-                    date: '29-02-2016'
+                    date: '14-02-2016'
                 },
                 payment:  {
-                    amount: 0.00,
-                    date: ''
+                    amount: 85.20,
+                    date: '09-01-2016'
                 }
             },
             {
@@ -371,7 +371,7 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 85.20,
-                    date: '31-03-2016'
+                    date: '14-03-2016'
                 },
                 payment:  {
                     amount: 0.00,
@@ -384,7 +384,7 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 85.20,
-                    date: '30-04-2016'
+                    date: '14-04-2016'
                 },
                 payment:  {
                     amount: 0.00,
@@ -397,7 +397,7 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 85.20,
-                    date: '31-05-2016'
+                    date: '14-05-2016'
                 },
                 payment:  {
                     amount: 0.00,
@@ -410,7 +410,7 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 85.20,
-                    date: '30-06-2016'
+                    date: '14-06-2016'
                 },
                 payment:  {
                     amount: 0.00,
@@ -454,14 +454,14 @@ var rent = {
             {
                 no: 3,
                 name: 'Styczeń/Luty 2016',
-                done: false,
+                done: true,
                 plan: {
                     amount: 20.34,
                     date: '29-02-2016'
                 },
                 payment:  {
                     amount: 20.34,
-                    date: ''
+                    date: '09-01-2016'
                 }
             },
             {
@@ -473,7 +473,7 @@ var rent = {
                     date: '30-04-2016'
                 },
                 payment:  {
-                    amount: 20.34,
+                    amount: 0.00,
                     date: ''
                 }
             },
@@ -486,7 +486,7 @@ var rent = {
                     date: '30-06-2016'
                 },
                 payment:  {
-                    amount: 20.34,
+                    amount: 0.00,
                     date: ''
                 }
             },
@@ -499,7 +499,7 @@ var rent = {
                     date: '31-08-2016'
                 },
                 payment:  {
-                    amount: 20.34,
+                    amount: 0.00,
                     date: ''
                 }
             },
@@ -512,7 +512,7 @@ var rent = {
                     date: '31-10-2016'
                 },
                 payment:  {
-                    amount: 20.34,
+                    amount: 0.00,
                     date: ''
                 }
             },
@@ -525,7 +525,7 @@ var rent = {
                     date: '31-12-2016'
                 },
                 payment:  {
-                    amount: 20.34,
+                    amount: 0.00,
                     date: ''
                 }
             }
@@ -835,7 +835,7 @@ var rent = {
                     date: '28-01-2016'
                 },
                 payment:  {
-                    amount: 29.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -848,7 +848,7 @@ var rent = {
                     date: '28-02-2016'
                 },
                 payment:  {
-                    amount: 29.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -861,7 +861,7 @@ var rent = {
                     date: '28-03-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -874,7 +874,7 @@ var rent = {
                     date: '28-04-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -887,7 +887,7 @@ var rent = {
                     date: '28-05-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -900,7 +900,7 @@ var rent = {
                     date: '28-06-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -913,7 +913,7 @@ var rent = {
                     date: '28-07-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -926,7 +926,7 @@ var rent = {
                     date: '28-08-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -939,7 +939,7 @@ var rent = {
                     date: '28-09-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -952,7 +952,7 @@ var rent = {
                     date: '28-10-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -965,7 +965,7 @@ var rent = {
                     date: '28-11-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -978,7 +978,7 @@ var rent = {
                     date: '28-12-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -988,10 +988,10 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 49.99,
-                    date: '28-02-2017'
+                    date: '28-01-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1001,10 +1001,10 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 49.99,
-                    date: '28-03-2017'
+                    date: '28-02-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1017,7 +1017,7 @@ var rent = {
                     date: '28-03-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1027,10 +1027,10 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 49.99,
-                    date: '28-03-2017'
+                    date: '28-04-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1043,7 +1043,7 @@ var rent = {
                     date: '28-05-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1056,7 +1056,7 @@ var rent = {
                     date: '28-06-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1069,7 +1069,7 @@ var rent = {
                     date: '28-07-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1082,7 +1082,7 @@ var rent = {
                     date: '28-08-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1095,7 +1095,7 @@ var rent = {
                     date: '28-09-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1108,7 +1108,7 @@ var rent = {
                     date: '28-10-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             }
@@ -1220,7 +1220,7 @@ var rent = {
                     date: '28-01-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1233,7 +1233,7 @@ var rent = {
                     date: '28-02-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1246,7 +1246,7 @@ var rent = {
                     date: '28-03-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1259,7 +1259,7 @@ var rent = {
                     date: '28-04-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1272,7 +1272,7 @@ var rent = {
                     date: '28-05-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1285,7 +1285,7 @@ var rent = {
                     date: '28-06-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1298,7 +1298,7 @@ var rent = {
                     date: '28-07-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1311,7 +1311,7 @@ var rent = {
                     date: '28-08-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1324,7 +1324,7 @@ var rent = {
                     date: '28-09-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1337,7 +1337,7 @@ var rent = {
                     date: '28-10-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1350,7 +1350,7 @@ var rent = {
                     date: '28-11-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1363,7 +1363,7 @@ var rent = {
                     date: '28-12-2016'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1376,7 +1376,7 @@ var rent = {
                     date: '28-02-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1389,7 +1389,7 @@ var rent = {
                     date: '28-03-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1402,7 +1402,7 @@ var rent = {
                     date: '28-03-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1415,7 +1415,7 @@ var rent = {
                     date: '28-03-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1428,7 +1428,7 @@ var rent = {
                     date: '28-05-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1441,7 +1441,7 @@ var rent = {
                     date: '28-06-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1454,7 +1454,7 @@ var rent = {
                     date: '28-07-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             },
@@ -1467,7 +1467,7 @@ var rent = {
                     date: '28-08-2017'
                 },
                 payment:  {
-                    amount: 49.99,
+                    amount: 0.00,
                     date: null
                 }
             }
@@ -4120,14 +4120,14 @@ var rent = {
                 no: 13,
                 name: 'Grudzień 2015',
                 remains: 0,
-                done: false,
+                done: true,
                 plan: {
                     amount: 561.15,
                     date: '27-01-2016'
                 },
                 payment:  {
-                    amount: 0.00,
-                    date: ''
+                    amount: 561.15,
+                    date: '04-01-2016'
                 }
             },
             {

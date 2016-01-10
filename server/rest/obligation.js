@@ -14,5 +14,10 @@ router.route('/month/:year/:month')
         var obligationList = core.getObligationForMonth(request.params.year, request.params.month);
         response.json(obligationList);
     });
+router.route('/details/:year/:month')
+    .get(function (request, response) {
+        var obligationList = core.getPaymentForMonth(request.params.year, request.params.month);
+        response.json(obligationList);
+    });
 
 module.exports = router;

@@ -9,7 +9,8 @@ angular
             scope: {
                 monthDetails: '=model'
             },
-            templateUrl: 'views/details/monthDetails.html',
+//            templateUrl: 'views/details/monthDetails.html',
+            templateUrl: 'views/details/paymentDetails.html',
             link: function (scope, element, attrs, controllers) {
                 scope.detailsTitle = detailsTitle.PL;
             }

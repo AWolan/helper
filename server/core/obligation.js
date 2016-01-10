@@ -30,6 +30,36 @@ var parse = serverRequire('/core/parse.js'),
         }
 
         return tankList;
+    },
+    getPayment = function (payment) {
+        var i, size, last, elemet, total = 0, list = [], result = null;
+        if (payment) {
+            if (payment.length > 0) {
+                size = payment.length;
+                last = payment[0];
+                for (i = 0; i < payment.length; i += 1) {
+                    elemet = payment[i];
+                    total += elemet.amount;
+                    list.push(elemet);
+                    if (parse.date(elemet.date, 'dd-mm-yyyy') > parse.date(last.date, 'dd-mm-yyyy')) {
+                        last = elemet;
+                    }
+                }
+            } else {
+                size = 1;
+                total = payment.amount;
+                last = payment;
+                list.push(payment);
+            }
+            result = {
+                total: total,
+                last: last,
+                size: size,
+                list: payment
+            };
+        }
+        
+        return result;
     };
 
 module.exports = {
@@ -70,6 +100,37 @@ module.exports = {
         }
 
         return result;
+    },
+    getPaymentForMonth: function (year, month) {
+        var i, j, obligation, payment, date, total, paymentDetails,
+            paymentList = [],
+            fullMonth = manager.getMonth(year, month);
+
+        for (i = 0; i < data.obligationList.length; i += 1) {
+            obligation = data.obligationList[i];
+            for (j = 0; j < obligation.paymentList.length; j += 1) {
+                payment = obligation.paymentList[j];
+                date = parse.date(payment.plan.date, 'dd-mm-yyyy');
+                
+                if (date >= fullMonth.getFirstDay() && date <= fullMonth.getLastDay()) {
+                    paymentDetails = getPayment(payment.payment);
+                    total = paymentDetails ? paymentDetails.total : 0;
+                    paymentList.push({
+                        id: obligation.id,
+                        name: obligation.name,
+                        group: obligation.group,
+                        type: obligation.type,
+                        paymentName: payment.name,
+                        done: payment.done,
+                        left: payment.plan.amount - total,
+                        plan: payment.plan,
+                        payment: paymentDetails
+                    });
+                }
+            }
+        }
+
+        return paymentList;
     },
     getObligationData: function () {
         var i, j, obligation, payment, firtNotDone, prevPayment,

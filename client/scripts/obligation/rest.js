@@ -18,6 +18,9 @@ angular
                     });
 
                 return deferred.promise;
+            },
+            getPaymentForMonth: function (year, month) {
+                return $http.get('/rest/obligation/details/' + year + '/' + month);
             }
         };
     }]);

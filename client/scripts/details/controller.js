@@ -12,7 +12,8 @@ angular
                 // actual month
                 $q.all([
                     salaryRest.getSalaryForMonth(actual.year, actual.month),
-                    obligationRest.getObligationForMonth(actual.year, actual.month)
+//                    obligationRest.getObligationForMonth(actual.year, actual.month)
+                    obligationRest.getPaymentForMonth(actual.year, actual.month)
                 ])
                     .then(function (responseArray) {
                         var salaryResponse = responseArray[0],
@@ -28,7 +29,8 @@ angular
                 // prev month
                 $q.all([
                     salaryRest.getSalaryForMonth(prev.year, prev.month),
-                    obligationRest.getObligationForMonth(prev.year, prev.month)
+//                    obligationRest.getObligationForMonth(prev.year, prev.month)
+                    obligationRest.getPaymentForMonth(prev.year, prev.month)
                 ])
                     .then(function (responseArray) {
                         var salaryResponse = responseArray[0],
@@ -44,7 +46,8 @@ angular
                 // next month
                 $q.all([
                     salaryRest.getSalaryForMonth(next.year, next.month),
-                    obligationRest.getObligationForMonth(next.year, next.month)
+//                    obligationRest.getObligationForMonth(next.year, next.month)
+                    obligationRest.getPaymentForMonth(next.year, next.month)
                 ])
                     .then(function (responseArray) {
                         var salaryResponse = responseArray[0],
