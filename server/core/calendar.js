@@ -1,113 +1,15 @@
 'use strict';
 
-var dayCount = [31, [28, 29], 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-    staticHolidayList = [
-        {
-            month: 1,
-            day: 1,
-            name: 'Nowy Rok',
-            isHoliday: true
-        },
-        {
-            month: 1,
-            day: 6,
-            name: 'Święto Trzech Króli',
-            isHoliday: true
-        },
-        {
-            month: 3,
-            day: 1,
-            name: 'Święto Pracy',
-            isHoliday: true
-        },
-        {
-            month: 3,
-            day: 3,
-            name: 'Święto Konstytucji 3 Maja',
-            isHoliday: true
-        },
-        {
-            month: 8,
-            day: 15,
-            name: 'Wniebowzięcie Najświętszej Maryi Panny',
-            isHoliday: true
-        },
-        {
-            month: 11,
-            day: 1,
-            name: 'Wszystkich Świętych',
-            isHoliday: true
-        },
-        {
-            month: 11,
-            day: 11,
-            name: 'Święto Niepodległości',
-            isHoliday: true
-        },
-        {
-            month: 12,
-            day: 25,
-            name: 'Boże Narodzenie (pierwszy dzień)',
-            isHoliday: true
-        },
-        {
-            month: 12,
-            day: 26,
-            name: 'Boże Narodzenie (drugi dzień)',
-            isHoliday: true
-        }
-    ],
-    movableHolidayIntervals = [
-        {
-            days: 0,
-            name: 'Środa Popielcowa',
-            isHoliday: false
-        },
-        {
-            days: 43,
-            name: 'Wielki Czwartek',
-            isHoliday: false
-        },
-        {
-            days: 1,
-            name: 'Wielki Piątek',
-            isHoliday: false
-        },
-        {
-            days: 1,
-            name: 'Wielka Sobota',
-            isHoliday: false
-        },
-        {
-            days: 1,
-            name: 'Wielkanoc',
-            isHoliday: true
-        },
-        {
-            days: 1,
-            name: 'Poniedziałek Wielkanocny',
-            isHoliday: false
-        },
-        {
-            days: 48,
-            name: 'Zesłanie Ducha Świętego',
-            isHoliday: false
-        },
-        {
-            days: 11,
-            name: 'Boże Ciało',
-            isHoliday: false
-        }
-    ],
-    getDayCount = function (month, isLeapYear) {
+var data = serverRequire('/data/calendar.js'),
+    getMaxDay = function (month, isLeapYear) {
         if (month === 2) {
-            return isLeapYear ? dayCount[1][1] : dayCount[1][0];
+            return isLeapYear ? data.maxDay[1][1] : data.maxDay[1][0];
         } else {
-            return dayCount[month - 1];
+            return data.maxDay[month - 1];
         }
     },
     nextDay = function (month, day, isLeapYear) {
-        var maxDay = getDayCount(month, isLeapYear),
+        var maxDay = getMaxDay(month, isLeapYear),
             isNextMonth = day + 1 > maxDay;
         
         return {
@@ -116,8 +18,7 @@ var dayCount = [31, [28, 29], 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
         };
     },
     getDay = function (month, day, interval, isLeapYear) {
-        var maxDayOfMonth = getDayCount(month, isLeapYear),
-            newInterval, result = {};
+        var newInterval, maxDayOfMonth = getMaxDay(month, isLeapYear);
         
         if (day + interval > maxDayOfMonth) {
             newInterval = day + interval - maxDayOfMonth - 1;
@@ -136,9 +37,8 @@ var dayCount = [31, [28, 29], 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
                 day: startDay
             };
         
-        for (i = 0; i < movableHolidayIntervals.length; i += 1) {
-            movableHolidayInterval = movableHolidayIntervals[i];
-            console.log(day);
+        for (i = 0; i < data.movableHolidayIntervals.length; i += 1) {
+            movableHolidayInterval = data.movableHolidayIntervals[i];
             day = getDay(day.month, day.day, movableHolidayInterval.days, isLeapYear);
             
             movableHolidayList.push({
@@ -191,20 +91,21 @@ var dayCount = [31, [28, 29], 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
 module.exports = {
     generateYear: function (year, startMonth, startDay) {
         var month, day, monthList = [], dayList = [],
-            dayOfWeek, eventList,
+            dayOfWeek, eventList, maxDay,
             isLeapYear = year % 4 === 0,
             movableHolidayList = getMovableHolidayList(startMonth, startDay, isLeapYear),
-            holidayList = staticHolidayList.concat(movableHolidayList);
+            holidayList = movableHolidayList.concat(data.staticHolidayList, data.anniversaryList);
         
         
         for (month = 1; month <= 12; month += 1) {
             dayList = [];
-            for (day = 1; day <= getDayCount(month, isLeapYear); day += 1) {
+            maxDay = getMaxDay(month, isLeapYear);
+            for (day = 1; day <= maxDay; day += 1) {
                 dayOfWeek = new Date(year, month - 1, day).getDay();
                 eventList = getHoliday(holidayList, month, day);
                 dayList.push({
                     day: day,
-                    datOfWeek: dayOfWeek,
+                    dayOfWeek: dayOfWeek,
                     type: getType(dayOfWeek, eventList),
                     eventList: eventList
                 });
@@ -214,10 +115,79 @@ module.exports = {
                 dayList: dayList
             });
         }
-        console.log(movableHolidayList);
+
         return {
             year: year,
             monthList: monthList
         };
+    },
+    getMonth: function (calendar, month, firstDay) {
+        var i, j,
+            actualDaysCount, prevDaysCount, prevMaxCount, nextDaysCount,
+            actualMonth, prevMonth, nextMonth, day,
+            dayList = [], dayOfWeekList = [], weekList = [],
+            maxBeforeDays = 7,
+            isLeapYear = calendar.year % 4 === 0;
+        
+        prevMonth = calendar.monthList[month - 2];
+        actualMonth = calendar.monthList[month - 1];
+        nextMonth = calendar.monthList[month];
+        
+        day = actualMonth.dayList[0];
+        
+        prevDaysCount = prevMonth.dayList.length - (7 - ((firstDay - day.dayOfWeek) % 7));
+        prevMaxCount = prevMonth.dayList.length;
+        actualDaysCount = actualMonth.dayList.length;
+        nextDaysCount = 42 - actualDaysCount - (prevMaxCount - prevDaysCount);
+        
+        console.log(prevDaysCount);
+        console.log(prevMaxCount);
+        console.log(actualDaysCount);
+        console.log(nextDaysCount);
+        
+        for (i = prevDaysCount; i < prevMaxCount; i += 1) {
+            day = prevMonth.dayList[i];
+            dayList.push({
+                month: prevMonth.month,
+                day: day.day,
+                dayOfWeek: day.dayOfWeek,
+                type: day.type,
+                eventList: day.eventList
+            });
+        }
+        
+        for (i = 0; i < actualDaysCount; i += 1) {
+            day = actualMonth.dayList[i];
+            dayList.push({
+                month: actualMonth.month,
+                day: day.day,
+                dayOfWeek: day.dayOfWeek,
+                type: day.type,
+                eventList: day.eventList
+            });
+        }
+        
+        for (i = 0; i < nextDaysCount; i += 1) {
+            day = nextMonth.dayList[i];
+            dayList.push({
+                month: nextMonth.month,
+                day: day.day,
+                dayOfWeek: day.dayOfWeek,
+                type: day.type,
+                eventList: day.eventList
+            });
+        }
+        
+        for (i = 0; i < 6; i += 1) {
+            dayOfWeekList = [];
+            for (j = 0; j < 7; j += 1) {
+                dayOfWeekList.push(dayList[i * 7 + j]);
+            }
+            weekList.push({
+                dayList: dayOfWeekList
+            });
+        }
+        
+        return weekList;
     }
 };
