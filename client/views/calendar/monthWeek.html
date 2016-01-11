@@ -1,12 +1,12 @@
-<table>
+<table class="details">
     <tr>
         <th></th>
         <th data-ng-repeat="day in title.dayList">{{day}}</th>
     </tr>
     <tr>
-        <tr data-ng-repeat="week in weekList">
+        <tr data-ng-repeat="week in month.weekList">
             <td></td>
-            <td data-ng-repeat="day in dayList">{{day.day}}.{{day.month}}</td>
+            <td data-ng-repeat="day in week.dayList" class="{{day.origin}}">{{day.day}}.{{day.month}}</td>
         </tr>
     </tr>
 </table>

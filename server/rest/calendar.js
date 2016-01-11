@@ -20,7 +20,18 @@ router.route('/month/:year/:month/:firstDay/:cMonth/:cDay')
             cMonth = parseInt(request.params.cMonth, 10),
             cDay = parseInt(request.params.cDay, 10),
             calendar = core.generateYear(year, cMonth, cDay),
-            monthDetails = core.getMonth(calendar, month, firstDay);
+            monthDetails = core.getWeekViewForMonth(calendar, month, firstDay);
+        response.json(monthDetails);
+    });
+router.route('/year/:year/:firstDay/:cMonth/:cDay')
+    .get(function (request, response) {
+        var year = parseInt(request.params.year, 10),
+            month = parseInt(request.params.month, 10),
+            firstDay = parseInt(request.params.firstDay, 10),
+            cMonth = parseInt(request.params.cMonth, 10),
+            cDay = parseInt(request.params.cDay, 10),
+            calendar = core.generateYear(year, cMonth, cDay),
+            monthDetails = core.getWeekViewForYear(calendar, firstDay);
         response.json(monthDetails);
     });
 

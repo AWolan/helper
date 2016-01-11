@@ -155,7 +155,7 @@ var rent = {
                 done: false,
                 plan: {
                     amount: 1300.00,
-                    date: '28-02-2015'
+                    date: '28-02-2016'
                 },
                 payment:  {
                     amount: 0.00,

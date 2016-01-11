@@ -15,7 +15,8 @@ angular
         'menu',
         'salary',
         'obligation',
-        'details'
+        'details',
+        'calendar'
     ])
     .factory('monthNames', function () {
         return {
@@ -98,6 +99,11 @@ angular
             .when('/details', {
                 templateUrl: 'views/details/main.html',
                 controller: 'DetailsController',
+                css: 'css/details.scss'
+            })
+            .when('/calendar', {
+                templateUrl: 'views/calendar/main.html',
+                controller: 'CalendarController',
                 css: 'css/details.scss'
             })
             .when('/rest/*', {})

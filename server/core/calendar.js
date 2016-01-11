@@ -84,9 +84,89 @@ var data = serverRequire('/data/calendar.js'),
         } else {
             return 'work';
         }
+    },
+    getWeekViewForMonth = function (calendar, month, firstDay) {
+        var i, j,
+            actualDaysCount, prevDaysCount, prevMaxCount, nextDaysCount,
+            actualMonth, prevMonth, nextMonth, day,
+            dayList = [], dayOfWeekList = [], weekList = [],
+            maxBeforeDays = 7,
+            isLeapYear = calendar.year % 4 === 0;
+        
+        prevMonth = month > 1 ? calendar.monthList[month - 2] : {dayList: []};
+        actualMonth = calendar.monthList[month - 1];
+        nextMonth = month < 12 ? calendar.monthList[month] : {dayList: []};
+        
+        day = actualMonth.dayList[0];
+        
+        prevDaysCount = prevMonth.dayList.length - (7 - ((firstDay - day.dayOfWeek) % 7));
+        prevMaxCount = prevMonth.dayList.length;
+        actualDaysCount = actualMonth.dayList.length;
+        nextDaysCount = 42 - actualDaysCount - (prevMaxCount - prevDaysCount);
+        
+        for (i = prevDaysCount; i < prevMaxCount; i += 1) {
+            day = prevMonth.dayList[i];
+            if (day) {
+                dayList.push({
+                    origin: 'prev',
+                    month: prevMonth.month,
+                    day: day.day,
+                    dayOfWeek: day.dayOfWeek,
+                    type: day.type,
+                    eventList: day.eventList
+                });
+            } else {
+                dayList.push({
+                    origin: 'prev'
+                });
+            }
+        }
+        
+        for (i = 0; i < actualDaysCount; i += 1) {
+            day = actualMonth.dayList[i];
+            dayList.push({
+                origin: 'actual',
+                month: actualMonth.month,
+                day: day.day,
+                dayOfWeek: day.dayOfWeek,
+                type: day.type,
+                eventList: day.eventList
+            });
+        }
+        
+        for (i = 0; i < nextDaysCount; i += 1) {
+            day = nextMonth.dayList[i];
+            if (day) {
+                dayList.push({
+                    origin: 'next',
+                    month: nextMonth.month,
+                    day: day.day,
+                    dayOfWeek: day.dayOfWeek,
+                    type: day.type,
+                    eventList: day.eventList
+                });
+            } else {
+                dayList.push({
+                    origin: 'next'
+                });
+            }
+        }
+        
+        for (i = 0; i < 6; i += 1) {
+            dayOfWeekList = [];
+            for (j = 0; j < 7; j += 1) {
+                dayOfWeekList.push(dayList[i * 7 + j]);
+            }
+            weekList.push({
+                dayList: dayOfWeekList
+            });
+        }
+        
+        return {
+            month: month,
+            weekList: weekList
+        };
     };
-
-
 
 module.exports = {
     generateYear: function (year, startMonth, startDay) {
@@ -121,73 +201,13 @@ module.exports = {
             monthList: monthList
         };
     },
-    getMonth: function (calendar, month, firstDay) {
-        var i, j,
-            actualDaysCount, prevDaysCount, prevMaxCount, nextDaysCount,
-            actualMonth, prevMonth, nextMonth, day,
-            dayList = [], dayOfWeekList = [], weekList = [],
-            maxBeforeDays = 7,
-            isLeapYear = calendar.year % 4 === 0;
-        
-        prevMonth = calendar.monthList[month - 2];
-        actualMonth = calendar.monthList[month - 1];
-        nextMonth = calendar.monthList[month];
-        
-        day = actualMonth.dayList[0];
-        
-        prevDaysCount = prevMonth.dayList.length - (7 - ((firstDay - day.dayOfWeek) % 7));
-        prevMaxCount = prevMonth.dayList.length;
-        actualDaysCount = actualMonth.dayList.length;
-        nextDaysCount = 42 - actualDaysCount - (prevMaxCount - prevDaysCount);
-        
-        console.log(prevDaysCount);
-        console.log(prevMaxCount);
-        console.log(actualDaysCount);
-        console.log(nextDaysCount);
-        
-        for (i = prevDaysCount; i < prevMaxCount; i += 1) {
-            day = prevMonth.dayList[i];
-            dayList.push({
-                month: prevMonth.month,
-                day: day.day,
-                dayOfWeek: day.dayOfWeek,
-                type: day.type,
-                eventList: day.eventList
-            });
+    getWeekViewForMonth: getWeekViewForMonth,
+    getWeekViewForYear: function (calendar, firstDay) {
+        var i, month, monthList = [];
+        for (i = 1; i <= 12; i += 1) {
+            month = getWeekViewForMonth(calendar, i, firstDay);
+            monthList.push(month);
         }
-        
-        for (i = 0; i < actualDaysCount; i += 1) {
-            day = actualMonth.dayList[i];
-            dayList.push({
-                month: actualMonth.month,
-                day: day.day,
-                dayOfWeek: day.dayOfWeek,
-                type: day.type,
-                eventList: day.eventList
-            });
-        }
-        
-        for (i = 0; i < nextDaysCount; i += 1) {
-            day = nextMonth.dayList[i];
-            dayList.push({
-                month: nextMonth.month,
-                day: day.day,
-                dayOfWeek: day.dayOfWeek,
-                type: day.type,
-                eventList: day.eventList
-            });
-        }
-        
-        for (i = 0; i < 6; i += 1) {
-            dayOfWeekList = [];
-            for (j = 0; j < 7; j += 1) {
-                dayOfWeekList.push(dayList[i * 7 + j]);
-            }
-            weekList.push({
-                dayList: dayOfWeekList
-            });
-        }
-        
-        return weekList;
+        return monthList;
     }
 };

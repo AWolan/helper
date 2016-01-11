@@ -1,0 +1,59 @@
+th {
+    height: 25px;
+    background-color: #4F4A48;
+    color: white;
+}
+
+td {
+    width: 100px;
+}
+
+table.details tr:nth-child(2n) td.actual {
+    background-color: #C7BDB7;
+    color: black;
+}
+
+table.details tr:nth-child(2n + 1) td.actual {
+    background-color: #FAEDE6;
+    color: black;
+}
+
+table.details tr:hover td.actual {
+    background-color: #7A7A7A;
+    color: white;
+}
+
+table.details tr:hover td.actual:hover {
+    background-color: black;
+    color: white;
+}
+
+table.details tr:nth-child(2n) td.prev {
+    background-color: #DAD7D5;
+    color: black;
+}
+
+table.details tr:nth-child(2n + 1) td.prev {
+    background-color: #EEE9E6;
+    color: black;
+}
+
+table.details tr:hover td.prev {
+    background-color: #D0D0D0;
+    color: #909090;
+}
+
+table.details tr:nth-child(2n) td.next {
+    background-color: #DAD7D5;
+    color: black;
+}
+
+table.details tr:nth-child(2n + 1) td.next {
+    background-color: #EEE9E6;
+    color: black;
+}
+
+table.details tr:hover td.next {
+    background-color: #C0C0C0;
+    color: black;
+}
